@@ -1,6 +1,5 @@
 package ru.otus;
 
-import ru.otus.db.InMemoryEventsDb;
 import ru.otus.db.Fake.FakeEventsDB;
 import ru.otus.domain.Event;
 import ru.otus.service.EventsService;

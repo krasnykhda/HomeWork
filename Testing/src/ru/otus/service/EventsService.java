@@ -3,8 +3,6 @@ package ru.otus.service;
 import ru.otus.db.EventsDb;
 import ru.otus.domain.Event;
 
-import java.util.Objects;
-
 public class EventsService {
 
     private final EventsDb db;
