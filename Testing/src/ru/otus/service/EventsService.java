@@ -2,6 +2,7 @@ package ru.otus.service;
 
 import ru.otus.db.EventsDb;
 import ru.otus.domain.Event;
+import java.math.*;
 
 public class EventsService {
 
@@ -40,8 +41,10 @@ public class EventsService {
         return mergedEvent;
     }
     public Event mergeTwoCloseEventsCorrected(long firstEventId, long secondEventId) {
-        try {
 
+        if(firstEventId<0||secondEventId<0||secondEventId==firstEventId||firstEventId>6||secondEventId>6||Math.abs(firstEventId)-Math.abs(secondEventId)>1){
+            throw new IllegalArgumentException();
+        }
             logger.log("Загрузка событий из БД");
             Event firstEvent = null;
             firstEvent = db.findById(firstEventId);
@@ -65,9 +68,6 @@ public class EventsService {
             db.saveEvent(mergedEvent);
             return mergedEvent;
         }
-        catch (Throwable e){
-            //System.out.printf("\"%s\" fails with message \"%s\" %n", "Объединение событий", e.getMessage());
-            return null;
-        }
-    }
+
 }
+

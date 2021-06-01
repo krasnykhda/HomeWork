@@ -15,8 +15,8 @@ public class HomeWork {
      */
 
      public static void main(String[] args) {
-       /* TestExecutor.doTest("Тест объединения 2 событий",
-                () -> new EventsServiceTest().testMergeTwoCloseEvents());*/
+        TestExecutor.doTest("Тест объединения 2 событий",
+                () -> new EventsServiceTest().testMergeTwoCloseEvents());
         TestExecutor.doTest("Тест объединения 2 событий",
                  () -> new EventsServiceTest().testMergeTwoCloseEventsCorrected());
     }
