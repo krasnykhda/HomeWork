@@ -13,7 +13,7 @@ public class AplicationRunner {
         this.numbersToTextConverter=numbersToTextConverter;
     }
 
-    public void Run(){
+    public void run(){
         ioService.outputStr("Введите число или команду exit");
         while (true)
         {
@@ -22,7 +22,12 @@ public class AplicationRunner {
                 ioService.outputStr("Работа завершена");
                 break;
             }
-            ioService.outputStr(numbersToTextConverter.getTextNumberView(str));
+            try {
+                ioService.outputStr(numbersToTextConverter.getTextNumberView(str));
+            }catch (NumberFormatException e){
+                ioService.outputStr(e.getMessage());
+            }
+//
         }
 
     }

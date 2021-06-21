@@ -20,8 +20,8 @@ public class NumberClassConverterRus implements NumberClassConverter {
 
         };
     private static final String[][] textNumber={
-            {" "," "," "," "," "},
-            {" сто",""," один"," одна"," одиннадцать"," десять "},
+            {"","","","",""},
+            {" сто",""," один"," одна"," одиннадцать"," десять"},
             {" двести"," двадцать"," два"," две"," двенадцать",""},
             {" триста"," тридцать"," три"," три","тринадцать",""},
             {" четыреста"," сорок"," четыре"," четыре"," четырнадцать"},
@@ -82,23 +82,19 @@ public class NumberClassConverterRus implements NumberClassConverter {
     };
     private String addCurrencyToEndNumber(int[] numberClass)
     {
-        switch (numberClass[2]){
-            case 0:return "рублей";
-            case 1:return "рубль";
-            case 2:return "рубля";
-            case 3:return "рубля";
-            case 4:return "рубля";
-            case 5:return "рублей";
-            case 6:return "рублей";
-            case 7:return "рублей";
-            case 8:return "рублей";
-            case 9:return "рублей";
-            default: break;
-        };
+        int unit=numberClass[2];
+        if(unit==0) return "рублей";
+        if(unit==1) return "рубль";
+        if(unit>1&&unit<5) return "рубля";
+        if(unit>=5) return "рублей";
         return "";
     };
     @Override
-    public String getNumberClassText(int[] numberClass,int classIndex) {
+    public String getNumberClassText(int[] numberClass,int classIndex) throws NumberFormatException {
+        if(classIndex>12)
+        {
+            throw new NumberFormatException("Превышена разрядность числа");
+        };
         int tensPosition=getTensPosition(numberClass,classIndex);
         int unitPosition=getUnitsPosition(numberClass,classIndex);
         String endNumber=(classIndex>=0&&(numberClass[0]!=0||numberClass[1]!=0||numberClass[2]!=0))?className[classIndex][getClassNamePosition(numberClass)]:"";

@@ -13,7 +13,7 @@ public class HomeWork {
         NumberClassConverter numberClassConverter=new NumberClassConverterRus();
         NumbersToTextConverter numbersToTextConverter=new NumbersToTextConverter(numberClassConverter);
         AplicationRunner aplicationRunner=new AplicationRunner(ioService,numbersToTextConverter);
-        aplicationRunner.Run();
+        aplicationRunner.run();
 
     }
 }
