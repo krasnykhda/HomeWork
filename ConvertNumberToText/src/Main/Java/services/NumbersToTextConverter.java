@@ -16,12 +16,12 @@ public class NumbersToTextConverter {
         int countClass=Number.length()/3;
         String TextNumber="";
         while (countClass>0){
-            try {
+            //try {
             int[] classNumber=getClassNumber(Number,countClass);
              TextNumber=TextNumber+numberClassConverter.getNumberClassText(classNumber,countClass-1);
-            } catch (NumberFormatException e){
-               throw new NumberFormatException(e.getMessage());
-            }
+           // } catch (NumberFormatException e){
+              // throw new NumberFormatException(e.getMessage());
+           // }
 
             countClass--;
         }
@@ -54,5 +54,4 @@ public class NumbersToTextConverter {
             throw new NumberFormatException(e.getMessage());
         }
      }
-
 }
